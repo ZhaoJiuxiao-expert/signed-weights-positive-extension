@@ -9,6 +9,10 @@ Let a real weight $w$ be supported on a set $S$ of integers in $[2,X]$ with $a<2
 
 对支撑于一个乘法区间的实权，本文在素模数上给出一组显式的非负狄利克雷特征系数。它们在指定窗口内逐点还原原权，并保留支撑外的零。论文证明了系数总质量的上界与最坏情形下界，给出相邻两个端点精确恢复冯·曼戈尔特加权和的公式，并用算例说明素数幂的贡献。逐个偶数的哥德巴赫误差估计仍待证明。
 
+Crossley’s finite quadratic prime race gives an example across several dyadic intervals. Write equation (2) as $W_K(\log z)=\sum_{p\le X}b_p$, with $X=\lfloor2Kz\rfloor$. Taking $w(p)=b_p/\log p$ at primes and zero elsewhere gives $\sum_{n\le X}\Lambda(n)w(n)=W_K(\log z)$. A prime’s only prime divisor is itself, so the interpolation proof gives total mass $2\lVert w\rVert_2$ on the whole window in one step. [Crossley, equation (2)](https://doi.org/10.5281/zenodo.24417709).
+
+Crossley 的有限二次素数竞赛给出了一个横跨多个二进区间的例子。将公式 (2) 写为 $W_K(\log z)=\sum_{p\le X}b_p$，其中 $X=\lfloor2Kz\rfloor$。在素数处取 $w(p)=b_p/\log p$，其余各处取零，便有 $\sum_{n\le X}\Lambda(n)w(n)=W_K(\log z)$。不同素数互不整除，因此插值定理的证明可直接用于整个窗口，所得系数的总质量为 $2\lVert w\rVert_2$。[Crossley，公式 (2)](https://doi.org/10.5281/zenodo.24417709)。
+
 ## Lean verification
 
 The formalization uses Lean 4.13.0 and Mathlib at commit `d7317655e2826dc1f1de9a0c138db2775c4bb841`. The two projects together contain 14 proof modules and public-axiom audits for 36 declarations. The audit records include the SHA-256 digests of the source files used for the checks.
