@@ -1,0 +1,70 @@
+{
+  "archive_sha256": "9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc",
+  "archive_bytes": 239275554,
+  "files": 175187,
+  "physical_lines": 17374215,
+  "source_bytes": 1030531854,
+  "source_modules_reachable_via_textual_imports_from_Main": 174767,
+  "sections": {
+    "(root)": {
+      "files": 2,
+      "lines": 28,
+      "bytes": 1216
+    },
+    "BuildAid": {
+      "files": 5,
+      "lines": 20,
+      "bytes": 850
+    },
+    "CompanionTheory": {
+      "files": 2027,
+      "lines": 194218,
+      "bytes": 11296366
+    },
+    "Development": {
+      "files": 141928,
+      "lines": 12232663,
+      "bytes": 767288236
+    },
+    "Formalism": {
+      "files": 18254,
+      "lines": 3200748,
+      "bytes": 164903481
+    },
+    "GroundTheory": {
+      "files": 8507,
+      "lines": 1119138,
+      "bytes": 54564791
+    },
+    "Lemmata": {
+      "files": 167,
+      "lines": 9232,
+      "bytes": 452342
+    },
+    "PositivityTheory": {
+      "files": 449,
+      "lines": 55130,
+      "bytes": 3109326
+    },
+    "ReciprocityTheory": {
+      "files": 3845,
+      "lines": 563016,
+      "bytes": 28914051
+    },
+    "Supplements": {
+      "files": 3,
+      "lines": 22,
+      "bytes": 1195
+    }
+  },
+  "modules_matching_casefolded_literal_in_path_or_text": {
+    "Behrend": 17,
+    "DedekindZeta": 105,
+    "Iwasawa": 15981,
+    "Kummer": 1576,
+    "LFunction": 1710,
+    "Linnik": 11,
+    "Seesaw": 3353,
+    "vonMangoldt": 134
+  }
+}

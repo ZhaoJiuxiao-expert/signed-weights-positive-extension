@@ -1,0 +1,147 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\newcommand{\paperAuthor}{Zixu Zhao}
+\newcommand{\codeURL}{https://github.com/ZhaoJiuxiao-expert/signed-weights-positive-extension/tree/main/lean}
+\ifdefined\IncludeChinese\usepackage{pdfpages}\fi
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{corollary}{Corollary}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\chiz}{\chi_0}
+\newcommand{\RePart}{\operatorname{Re}}
+\hypersetup{pdftitle={Positive-definite extensions of signed weights on multiplicative intervals and an endpoint formula for prime-weighted sums},pdfauthor={\paperAuthor}}
+\title{Positive-definite extensions of signed weights on multiplicative intervals and an endpoint formula for prime-weighted sums}
+\author{\paperAuthor\\[2pt]\small Sichuan University}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let a real weight be supported on a subset of the integers in $[2,X]$ whose largest element is less than twice its smallest. For every prime $q>X^2$, we construct nonnegative coefficients of Dirichlet characters modulo $q$ that reproduce the weight at every integer from $2$ to $X$, including the zeros outside its support. For a nonzero weight, the total coefficient mass can be taken to be twice its Euclidean norm. We form a character polynomial with the prescribed weights and square its modulus. The width of the support and the choice of modulus rule out all cross terms that could alter the prescribed values. Applied to the ramp sums in Alp\"oge's proof library, an adjacent-endpoint difference recovers the signed von Mangoldt sum exactly and cancels every linear correction involving a logarithmic derivative. A complementary lower bound for worst-case sign data quantifies the cost of interpolation.
+\end{abstract}
+\noindent\textit{Keywords.} Positive-definite functions, Dirichlet characters, finite Fourier transform, prime-weighted sums, formal verification.
+
+\section{Motivation}
+Alp\"oge's Lean library for the Riemann hypothesis uses positive linear combinations of Dirichlet characters to control weighted sums over prime powers. The associated research note displays the ramp weight $(y/n-1)_+$ on page~3. The source gives separate centering terms for principal and nonprincipal characters, together with a one-sided estimate on distant windows~\cite{alpn,alps}. A file-by-file index of the author's source archive counts 175,187 Lean files and 17,374,215 physical lines. Our starting point is the \texttt{CharFamily} module, which defines character families and their centered ramp sums. This raises a finite interpolation problem. A weight may depend on a target integer and may change sign. Can a combination of characters with nonnegative coefficients match all its values on a prescribed interval of integers? How large must the sum of those coefficients be, and how can one recover the original weighted sum from the ramp sums?
+
+On a finite abelian group, Bochner's theorem represents a positive-definite function as a Fourier sum with nonnegative spectral masses~\cite{rudin}. Positive-definite extension from a restricted domain has also been studied systematically. For example, Bakonyi and Timotin give an extension criterion using chordality of a Cayley graph~\cite{bt}. Here the value at the identity may depend on the prescribed weight. We require zeros at specified integers outside the support and give an explicit upper bound for the value at the identity. The order on the ordinary integers prevents collisions under modular multiplication. The resulting extension enters the endpoint formula directly. All the results below are unconditional and can be proved independently of the Riemann hypothesis and its generalization to Dirichlet $L$-functions.
+
+\section{Interpolation with nonnegative spectral masses}
+Let $X\ge2$ be an integer and $q>X^2$ a prime. Write $G=(\Z/q\Z)^\times$, $h=q-1$, and let $\widehat G$ be the set of all complex characters of $G$. Choose a set $S\subseteq\{2,\ldots,X\}$ such that $a<2b$ for every $a,b\in S$. Extend a real weight $w\colon S\to\R$ by zero to the rest of $\{2,\ldots,X\}$, and put $V=\sum_{n\in S}w(n)^2$.
+
+\begin{theorem}\label{thm:window}
+For every real $c>0$ there exist nonnegative real coefficients $a_\chi$ such that
+\[
+  \sum_{\chi\in\widehat G}a_\chi\chi(k)=w(k)\quad(2\le k\le X),
+  \qquad \sum_{\chi\in\widehat G}a_\chi=c+\frac{V}{c}.
+\]
+The coefficients satisfy $a_{\bar\chi}=a_\chi$, so replacing each character by its real part gives the same values at the prescribed integers. If $w\ne0$, the choice $c=\sqrt V$ gives total mass $2\sqrt V$, the minimum over the parameter $c$ in this construction. For $w=0$ the all-zero coefficients also interpolate the data.
+\end{theorem}
+
+\begin{proof}
+Let $T=\{1\}\cup S$, with $A(1)=c$ and $A(n)=w(n)$ for $n\in S$. Set
+\[
+  P(\chi)=\sum_{u\in T}A(u)\chi(u),
+  \qquad a_\chi=\frac{|P(\chi)|^2}{ch}.
+\]
+Nonnegativity and conjugation symmetry follow immediately. Character orthogonality gives $h^{-1}\sum_\chi\chi(v)\overline{\chi(u)}=\ind_{u=v}$ for $u,v\in G$~\cite{dlmf}. Expanding the square and interchanging dummy indices yields
+\[
+  \sum_\chi a_\chi\chi(k)=\frac1c\sum_{a,b\in T} A(a)A(b)
+     \,\ind_{a\equiv kb\, (\mathrm{mod}\ q)}.
+\]
+For $2\le k\le X$, we have $a\le X$ and $kb\le X^2<q$, so the congruence forces equality of ordinary integers. If $b\in S$, then $kb\ge2b>a$ for all $a\in S$, and $kb>1$ also excludes $a=1$. Thus only $b=1$ and $a=k$ can contribute. The corresponding product is $c\,w(k)$ for $k\in S$, and the sum is empty for $k\notin S$. At $k=1$, only $a=b$ contributes, giving total mass $(c^2+V)/c$. Finally, $(c-\sqrt V)^2\ge0$ gives the stated minimum.
+\end{proof}
+
+Write $F(g)=\sum_\chi a_\chi\chi(g)$. For any finite list $g_i\in G$ and $z_i\in\C$,
+\[
+  \sum_{i,j}\overline{z_i}z_j F(g_i^{-1}g_j)
+   =\sum_\chi a_\chi\left|\sum_j z_j\chi(g_j)\right|^2\ge0.
+\]
+Thus $F$ is positive definite in the usual harmonic-analysis sense, which allows zero values of this quadratic form. Equivalently, take the rows of a matrix to be the multiplicative translates of $A$ on the residue classes, with $A$ extended by zero. The identity row of its Gram matrix gives the double sum above before division by $c$. For integer weights the accompanying code verifies this construction in exact arithmetic.
+
+\begin{corollary}
+Decompose the support of any real weight on $[2,X]$ into $J$ nonempty dyadic blocks $[2^j,2^{j+1})$. There is an exact interpolant on the whole window with total mass at most $2\sqrt J\,\|w\|_2$.
+\end{corollary}
+\begin{proof}
+Use the same modulus $q$ for every block and add the corresponding coefficients character by character. The $j$th block contributes mass $2\|w_j\|_2$. Cauchy--Schwarz and disjointness of the supports give the bound. A single block contributes at most $2\|w\|_2$.
+\end{proof}
+
+\section{A lower bound on total mass}
+Fix $q$ and let $S$ have $m\ge1$ elements. Even when interpolation is required only on $S$, some choices of signs require a substantial total mass.
+\begin{proposition}\label{prop:lower}
+There exists a function $w\colon S\to\{-1,1\}$ such that every nonnegative coefficient family satisfying $w(n)=\sum_\chi a_\chi\RePart\chi(n)$ on $S$ obeys
+\[
+  \sum_\chi a_\chi\ge\sqrt{\frac{m}{2\log(2h)}}.
+\]
+\end{proposition}
+\begin{proof}
+Choose the signs $\varepsilon_n\in\{-1,1\}$ independently with equal probabilities. For fixed $\chi$, put $Z_\chi=\sum_{n\in S}\varepsilon_n\RePart\chi(n)$. Independence, $|\RePart\chi(n)|\le1$ and $\cosh v\le e^{v^2/2}$ give $\mathbb E e^{uZ_\chi}\le e^{mu^2/2}$ for every $u>0$. Markov's inequality with $u=t/m$ yields $\Pr(Z_\chi\ge t)\le e^{-t^2/(2m)}$. Take $t=\sqrt{2m\log(2h)}$. The union of these events over all $h$ characters has probability at most $1/2$. Fix a choice $w$ of signs for which every $Z_\chi\le t$. Multiply the interpolation identity by $w(n)$ and sum in $n$. Nonnegativity of the coefficients gives $m=\sum_\chi a_\chi Z_\chi\le t\sum_\chi a_\chi$.
+\end{proof}
+
+When $X^2<q<2X^2$, Theorem~\ref{thm:window} gives the upper bound $2\sqrt m$ for sign data. It differs from the worst-case lower bound in Proposition~\ref{prop:lower} by a factor of $O(\sqrt{\log X})$. Individual arithmetic weights may admit representations of smaller mass.
+
+\section{Recovering the weight from the ramp sums}
+Write $(v)_+=\max(v,0)$, and let $\Lambda$ denote the von Mangoldt function, taking the value $\log p$ on every positive power $p^j$ of a prime and zero elsewhere. Define the adjacent-endpoint operator by
+\[
+  D_XH=XH(X+1)-(X+1)H(X).
+\]
+\begin{lemma}\label{lem:ramp}
+For each integer $n\ge1$, let $B_n(y)=(y/n-1)_+$. Then $D_XB_n=\ind_{n\le X}$.
+\end{lemma}
+\begin{proof}
+If $n\le X$, expand both positive parts as linear expressions. The two terms involving $1/n$ cancel and leave $1$. If $n\ge X+1$, both positive parts vanish. In particular, the endpoint values are $1$ for $n=X$ and $0$ for $n=X+1$. By linearity the formula applies term by term to any finite weighted sum.
+\end{proof}
+
+Define the uncentered character ramp sum by $R_\chi(y)=\sum_{1\le n\le y}\Lambda(n)\chi(n) B_n(y)$. Use the centering convention of Alp\"oge's code. For a nonprincipal character,
+\[
+  G_\chi(y)=R_\chi(y)+y\frac{L'(1,\chi)}{L(1,\chi)}.
+\]
+For the principal coordinate use the trivial character $\mathbf1$ modulo $1$ and put $G_{\mathbf1}(y)=R_{\mathbf1}(y)-y\log y+(1+\gamma)y$, where $\gamma$ is Euler's constant. Since $X+1<q$, the principal character modulo $q$ and the trivial character modulo $1$ agree on every summand that contributes at either endpoint. Let $a_0$ be the spectral coefficient of the original principal character modulo $q$. Set $H(y)=\sum_\chi a_\chi\RePart G_\chi(y)$ with the principal coordinate replaced as above. Omitting characters of zero mass leaves strictly positive coefficients.
+
+\begin{theorem}\label{thm:endpoint}
+For the coefficients of Theorem~\ref{thm:window},
+\[
+  \sum_{n=2}^{X}\Lambda(n)w(n)
+       =D_XH+a_0X(X+1)\log(1+1/X).
+\]
+\end{theorem}
+\begin{proof}
+Apply Lemma~\ref{lem:ramp} to each uncentered ramp sum, interchange the finite sums, and apply Theorem~\ref{thm:window}. Since $\Lambda(1)=0$, interpolation at $1$ is unnecessary. Every centering term of the form $Cy$ is annihilated by $D_X$, including the terms containing logarithmic derivatives for nonprincipal characters. The remaining principal contribution follows from $D_X(y\log y)=X(X+1)(\log(X+1)-\log X)$. Moving it to the right gives the stated identity. Its coefficient is $a_0=(c+\sum_{n\in S}w(n))^2/(ch)$.
+\end{proof}
+
+\section{A sieve weight for a fixed even integer}
+Let $N\ge4$ be even and set $X=N-2$. For $N/3\le n<2N/3$, put $m=N-n$. Given $y,t\ge1$, define $w(n)=\sum_{d\mid m,\ d>t}\mu(d)$ when $\gcd(n,N)=1$ and the least prime factor of $m$ exceeds $y$. Set $w(n)=0$ at the other positions. Here $\mu$ is the M\"obius function. The support $S$ satisfies $a<2b$ for every $a,b\in S$. Theorem~\ref{thm:endpoint} therefore applies for each choice of $N,y,t$. To restrict the resulting sum to primes, subtract the contributions $\log p\,w(p^j)$ of all $p^j\le X$ with $j\ge2$ from its left-hand side.
+
+Take $N=64$, $X=62$, $y=2$, $t=8$ and $q=3847$. The support consists of $23,27,29,33,35,41$ with respective weights $-1,-1,1,-1,-1,-1$. For instance, $n=29$ gives $m=35$, whose only divisor greater than $8$ is $35$, and hence $w(29)=1$. Taking $c=2$ gives $V=6$, total mass $5$ and $a_0=1/1923$. The left-hand side of Theorem~\ref{thm:endpoint} is exactly
+\[
+  -\log 23-\log 3+\log 29-\log 41.
+\]
+The term $-\log3$ comes from $27=3^3$. This example exhibits both signs among the prescribed coordinates while all spectral coefficients are nonnegative.
+
+A Goldbach application would require an upper bound on the endpoint difference for the whole family of functions $H$ as $N$ and the cutoffs vary. The original window condition controls an integral on arbitrarily distant long windows for a \emph{fixed} character family~\cite{alps}. The construction above compares adjacent endpoints at a \emph{prescribed} scale $X$, while both the modulus and the character family vary with $X$. A continuous function illustrates the gap. For $B>0$, put $H_B(y)=-B\max(1-2|y-X|,0)$. The zero function bounds $H_B$ from above everywhere, and hence on every distant window. Yet $H_B(X)=-B$ and $H_B(X+1)=0$, so $D_XH_B=(X+1)B$ is arbitrarily large. This example tests the strength of one-sided control alone. Stronger bounds for genuine character ramp sums must use their arithmetic structure. A specific quantity for further study is the joint endpoint difference for the squared-modulus spectral weights in Theorem~\ref{thm:window}. Further error estimates are needed to deduce that the number of prime-pair representations is positive for each sufficiently large even integer.
+
+\begin{thebibliography}{9}
+\bibitem{alpn} L. Alp\"oge, four-page research note on a proof of the Riemann hypothesis, 20 November 2026, especially pp.~1 and 3. \href{https://alpo.ge/remark.pdf}{Author's note}.
+\bibitem{alps} L. Alp\"oge, Lean proof library for the Riemann hypothesis, \texttt{CharFamily.lean}, lines 9--42, CocoSgt mirror, commit \texttt{7cbf7a0}. \href{https://github.com/CocoSgt/riemann-hypothesis-lean/blob/7cbf7a0c32fca1badf05931879a37c3f8a2b03b4/src/Development/AutomorphicArithmetic/DedekindLFunctions/CharFamily.lean\#L9-L42}{Definitions of the ramp, centering terms and window condition}.
+\bibitem{rudin} W. Rudin, \emph{Fourier Analysis on Groups}, Interscience, 1962, Chapter~1. \href{https://doi.org/10.1002/9781118165621}{Publisher's edition}.
+\bibitem{bt} M. Bakonyi and D. Timotin, Extensions of positive definite functions on amenable groups, \emph{Canadian Mathematical Bulletin} \textbf{54} (2011), 3--11, Theorem~2.1. \href{https://doi.org/10.4153/CMB-2010-081-0}{Journal article}.
+\bibitem{dlmf} NIST Digital Library of Mathematical Functions, \S27.8, Dirichlet characters, Eq.~27.8.6. \href{https://dlmf.nist.gov/27.8.E6}{Character orthogonality}.
+\end{thebibliography}
+
+\section*{Formal verification and code}
+The accompanying library uses Lean 4.13.0 with a pinned Mathlib version. For Theorem~\ref{thm:window} it starts from the full set of complex Dirichlet characters at prime level and verifies character orthogonality, the explicit coefficients, interpolation on the whole window and total mass. It proves Proposition~\ref{prop:lower} for arbitrary finite real matrices with entries of absolute value at most one, then specializes to the real parts of Dirichlet characters. The formalization of Theorem~\ref{thm:endpoint} uses Mathlib's von Mangoldt function and allows an arbitrary real linear centering coefficient for each character. The package includes integer certificates using the Lean standard library, an independent check of the numerical example, axiom reports and build instructions.
+
+\smallskip\noindent\textit{AI assistance.} AI tools assisted in developing the arguments, drafting and translating the manuscript, and writing the Lean proofs. The accompanying verification records report the results of running the proofs through Lean.
+
+\smallskip\noindent\href{\codeURL}{Lean formalization and verification records (GitHub).}
+\ifdefined\IncludeChinese
+  \clearpage
+  \includepdf[pages=-,pagecommand={}]{paper-zh.pdf}
+\fi
+\end{document}

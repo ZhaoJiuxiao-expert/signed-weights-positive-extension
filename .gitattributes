@@ -1,0 +1,5 @@
+* text=auto
+lean/** -text
+*.pdf binary
+*.docx binary
+*.zip binary

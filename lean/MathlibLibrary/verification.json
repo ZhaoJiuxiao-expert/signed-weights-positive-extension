@@ -1,0 +1,107 @@
+{
+  "lean": "Lean (version 4.13.0, x86_64-w64-windows-gnu, commit 6d22e0e5cc5a, Release)",
+  "mathlib": "d7317655e2826dc1f1de9a0c138db2775c4bb841",
+  "modules": {
+    "PaperFourier": {
+      "sha256": "9344b686945c57fa1131abe3e5d19f15c215f8a99f7751bc38dd56c52944d916",
+      "checked": 4,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'PaperFourier.ramp_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PaperFourier.weighted_ramp_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PaperFourier.centered_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PaperFourier.centered_ramp_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "Orthogonality": {
+      "sha256": "4842573b0fecb4fe1228a53023c5298a88b994ea608fd4c16627b693bd96c936",
+      "checked": 1,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.PrimeCharacter.orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "FourierWindow": {
+      "sha256": "2561457849daf92029e8de2f0090ebeeed0b3a8a0b2d12aa583a47a6810f88ad",
+      "checked": 4,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.FourierWindow.spectral_expand' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.FourierWindow.dirichlet_window_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.FourierWindow.dirichlet_window_of_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.FourierWindow.dirichletCoeff_star' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "RademacherBound": {
+      "sha256": "60d264d2861d7d58ea33fd0e9435e4e69d8acefa1a3ebb68d2f42f8156b978ec",
+      "checked": 3,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'RademacherBound.mass_bound_of_signs' depends on axioms: [propext, Classical.choice, Quot.sound]\n'RademacherBound.exists_signs_with_correlation_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'RademacherBound.exists_signs_mass_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "PrimeWindow": {
+      "sha256": "07b55b0a51b8b8fb89476e4b568eb45aa7bce33fc5ad7145dae331238ef8a235",
+      "checked": 2,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.PrimeCharacter.positive_window' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.PrimeCharacter.positive_window_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "PrimeEndpoint": {
+      "sha256": "df195f7c917bc7ad7b53852185c588dc70d88337d42943a520472cdd104c5f46",
+      "checked": 2,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.PrimeEndpoint.weighted_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.PrimeEndpoint.vonMangoldt_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "PrincipalMass": {
+      "sha256": "8acfc7988beb32e567652bcf8a87faaf2aa670011451164220a983fd1eef8769",
+      "checked": 2,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.FourierWindow.principal_mass' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.FourierWindow.mass_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "WindowObstruction": {
+      "sha256": "a13489bcae8aa7afce78c959c04b8b917dcedf3113e9fe7a38304382a16852b1",
+      "checked": 1,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.WindowObstruction.nonpositive_large_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "CharacterLowerBound": {
+      "sha256": "d029ff7795d214d575cc6e942e1cbb558f6ced08623f974e2bf826299b280ab8",
+      "checked": 1,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.PrimeCharacter.exists_dirichlet_signs_mass_lower_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "Blocks": {
+      "sha256": "fd63d406ac84d356392028609a5a473085d0e015f37f8825dd48a01b9a118207",
+      "checked": 1,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "output": "'Goldbach.PrimeCharacter.block_sum' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    }
+  },
+  "status": "passed"
+}

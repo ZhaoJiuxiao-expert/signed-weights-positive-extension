@@ -1,0 +1,7 @@
+name = "positive_window"
+version = "1.0.0"
+defaultTargets = ["WindowProof"]
+
+[[lean_lib]]
+name = "WindowProof"
+roots = ["PositiveWindow", "RampEndpoint", "GramCertificate", "Main"]

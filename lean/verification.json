@@ -1,0 +1,60 @@
+{
+  "toolchain": "Lean (version 4.13.0, x86_64-w64-windows-gnu, commit 6d22e0e5cc5a, Release)",
+  "modules": {
+    "RampEndpoint": {
+      "sha256": "ef5f455d4e9c39c83a130720d552b4fee7f15fe2dbebe5394e145c6c4148cd7e",
+      "checked": 3,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_output": "'RampEndpoint.endpointDiff_ramp' depends on axioms: [propext, Quot.sound]\n'RampEndpoint.endpointDiff_weighted_ramps' depends on axioms: [propext, Quot.sound]\n'RampEndpoint.endpointDiff_weighted_terms' depends on axioms: [propext, Quot.sound]"
+    },
+    "PositiveWindow": {
+      "sha256": "9baef959eaa02e84927aa8c7008710eb60c2f0fbb648fdffe92acf74c108ac46",
+      "checked": 2,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_output": "'PositiveWindow.kernel_window' depends on axioms: [propext, Quot.sound]\n'PositiveWindow.kernel_one' depends on axioms: [propext, Quot.sound]"
+    },
+    "GramCertificate": {
+      "sha256": "571de5d5816ecfc6b9a1e6e56b58217d633d518342c76284166678d7763eb769",
+      "checked": 8,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_output": "'Goldbach.GramCertificate.gram_square_sum' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.gram_nonneg' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.regularized_nonneg' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.regularized_pos' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.quadratic_addDiagonal' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.gram_addDiagonal_pos' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.translation_gram_entry' depends on axioms: [propext, Quot.sound]\n'Goldbach.GramCertificate.translation_triple_sum' depends on axioms: [propext, Quot.sound]"
+    },
+    "Main": {
+      "sha256": "62e8777b8f5e5f417ba8f6813df95e8e5680468b347fa33df9622ec33bc8def0",
+      "checked": 2,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_output": "'Goldbach.MultiplicationCertificate.first_row_eq_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Goldbach.MultiplicationCertificate.certificate' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    }
+  },
+  "example": {
+    "N": 64,
+    "X": 62,
+    "q": 3847,
+    "c": 2,
+    "weight": {
+      "23": -1,
+      "27": -1,
+      "29": 1,
+      "33": -1,
+      "35": -1,
+      "41": -1
+    },
+    "spectral_mass": "5",
+    "principal_coefficient": "1/1923",
+    "coordinates_2_through_X": 61
+  },
+  "status": "passed"
+}

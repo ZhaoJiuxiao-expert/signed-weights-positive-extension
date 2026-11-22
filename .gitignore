@@ -1,0 +1,9 @@
+.lake/
+*.olean
+*.ilean
+__pycache__/
+verification-local.json
+*.aux
+*.log
+*.out
+*.synctex.gz
