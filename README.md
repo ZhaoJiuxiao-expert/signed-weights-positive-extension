@@ -3,6 +3,8 @@
 **Zixu Zhao · Sichuan University**  
 **赵子旭 · 四川大学**
 
+[Published preprint on Zenodo / Zenodo 预印本](https://doi.org/10.5281/zenodo.24439399)
+
 [English paper (PDF)](papers/paper-en.pdf) · [中文论文（PDF）](papers/paper-zh.pdf) · [English LaTeX](papers/paper-en.tex) · [中文 Word 稿](papers/paper-zh.docx) · [Lean code and verification guide](lean/README.md)
 
 Let a real weight $w$ be supported on a set $S$ of integers in $[2,X]$ with $a<2b$ for all $a,b$ in $S$. For each prime $q>X^2$, the paper constructs a nonnegative combination of all Dirichlet characters modulo $q$ that interpolates $w$ on the entire integer window, including the zeros outside $S$. Taking $c>0$, the coefficients have total mass $c+\sum_{n\in S}w(n)^2/c$. The paper also proves a worst-case lower bound on this mass and an exact adjacent-endpoint formula for the von Mangoldt weighted sum. Deriving bounds for each individual even integer would require an additional estimate.
